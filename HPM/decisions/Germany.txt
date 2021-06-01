@@ -468,7 +468,7 @@ political_decisions = {
             }
             AUS = {
                 exists = yes
-                NOT = { any_core = { owned_by = GER } }
+                #NOT = { any_core = { owned_by = GER } }
                 OR = {
                     government = absolute_monarchy
                     government = prussian_constitutionalism
@@ -477,7 +477,7 @@ political_decisions = {
             }
             RUS = {
                 exists = yes
-                NOT = { any_core = { owned_by = GER } }
+                #NOT = { any_core = { owned_by = GER } }
                 OR = {
                     government = absolute_monarchy
                     government = prussian_constitutionalism
@@ -514,7 +514,7 @@ political_decisions = {
             }
             KUK = {
                 exists = yes
-                NOT = { any_core = { owned_by = GER } }
+                #NOT = { any_core = { owned_by = GER } }
                 OR = {
                     government = absolute_monarchy
                     government = prussian_constitutionalism
@@ -523,7 +523,7 @@ political_decisions = {
             }
             RUS = {
                 exists = yes
-                NOT = { any_core = { owned_by = GER } }
+                #NOT = { any_core = { owned_by = GER } }
                 OR = {
                     government = absolute_monarchy
                     government = prussian_constitutionalism
@@ -825,7 +825,7 @@ political_decisions = {
     }
 
     annex_sigmaringen = {
-        picture = declare_republic_of_neuchatel
+        picture = sigmaringen
         potential = {
             has_country_flag = prussian_germany
             OR = {

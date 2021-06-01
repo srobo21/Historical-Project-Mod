@@ -1644,6 +1644,7 @@ province_event = {
             AND = {
                 year = 1900
                 OR = {
+					province_id = 491      #Ciudad Real  - Spain - https://static.cambridge.org/binary/version/id/urn:cambridge.org:id:binary:20191101091046822-0455:S0020859019000567:S0020859019000567_fig1g.gif?pub-status=live
                     province_id = 2334      #Punta Arenas
                     province_id = 2332      #Osorno
                     province_id = 1408    #Padang (Ombilin)
@@ -2064,12 +2065,10 @@ country_event = {
         1935 = { trade_goods = coal } #Aruchukwu (representing Enugu)
         1949 = { trade_goods = coal } #Hadejia
         1942 = { trade_goods = iron } #Bauchi
-        1934 = { trade_goods = rubber } #Calabar
-        1928 = { trade_goods = rubber } #Benin
-        1933 = { trade_goods = rubber } #Awka
+        1934 = { trade_goods = timber } #Calabar
+        1928 = { trade_goods = timber } #Benin
+        1933 = { trade_goods = timber } #Awka
         1932 = { trade_goods = tropical_wood } #Bonny
-        random_owned = { limit = { province_id = 1923 NOT = { trade_goods = tropical_wood } } trade_goods = tropical_wood } #Lagos
-        1927 = { trade_goods = tropical_wood } #Ilorin
         1926 = { trade_goods = tropical_wood } #Ife
         1924 = { trade_goods = tropical_wood } #Abeokuta
         1940 = { trade_goods = cotton } #Bida
@@ -2099,8 +2098,6 @@ country_event = {
         1930 = { trade_goods = iron } #Idah (Itakpe in Kogi State)
         1948 = { trade_goods = sulphur } #Sokoto deposits
         ####Other RGOs
-        random_owned = { limit = { province_id = 1923 NOT = { trade_goods = rubber } } trade_goods = rubber } #Lagos
-        1927 = { trade_goods = fruit } #Ilorin
         1926 = { trade_goods = tropical_wood } #Ife
         1924 = { trade_goods = cattle } #Abeokuta
         1940 = { trade_goods = cotton } #Bida
@@ -2169,11 +2166,8 @@ country_event = {
         name = "EVTOPTC199038" #Cotton and Tobacco Industry
         1935 = { trade_goods = coal } #Aruchukwu (representing Enugu)
         1942 = { trade_goods = iron } #Bauchi
-        1933 = { trade_goods = rubber } #Awka
-        1932 = { trade_goods = tropical_wood } #Bonny
-        random_owned = { limit = { province_id = 1923 NOT = { trade_goods = tropical_wood } } trade_goods = tropical_wood } #Lagos
-        1926 = { trade_goods = tropical_wood } #Ife
-        1927 = { trade_goods = cotton } #Ilorin
+        1933 = { trade_goods = timber } #Awka
+        1932 = { trade_goods = timber } #Bonny
         1940 = { trade_goods = cotton } #Bida
         1951 = { trade_goods = cotton } #Kuka
         1950 = { trade_goods = cotton } #Yola
@@ -2218,12 +2212,9 @@ country_event = {
         1935 = { trade_goods = coal } #Aruchukwu (representing Enugu)
         1949 = { trade_goods = coal } #Hadejia
         1942 = { trade_goods = iron } #Bauchi
-        1934 = { trade_goods = rubber } #Calabar
-        1928 = { trade_goods = rubber } #Benin
-        1933 = { trade_goods = rubber } #Awka
+        1934 = { trade_goods = timber } #Calabar
+        1928 = { trade_goods = timber } #Benin
         1932 = { trade_goods = tropical_wood } #Bonny
-        random_owned = { limit = { province_id = 1923 NOT = { trade_goods = tropical_wood } } trade_goods = tropical_wood } #Lagos
-        1927 = { trade_goods = tropical_wood } #Ilorin
         1926 = { trade_goods = tropical_wood } #Ife
         1924 = { trade_goods = tropical_wood } #Abeokuta
         1951 = { trade_goods = cotton } #Kuka
@@ -2378,7 +2369,6 @@ country_event = {
         1897 = { trade_goods = coffee } #Akoupe
         1900 = { trade_goods = cotton } #Odienne
         1898 = { trade_goods = cotton } #Kong
-        1899 = { trade_goods = rubber } #Bondouku
         1896 = { trade_goods = coffee } #Man
         1893 = { trade_goods = coffee }
         1892 = { trade_goods = coffee }
@@ -2393,7 +2383,6 @@ country_event = {
         1897 = { trade_goods = cotton } #Akoupe
         1900 = { trade_goods = cotton } #Odienne
         1898 = { trade_goods = cotton } #Kong
-        1899 = { trade_goods = rubber } #Bondouku
 
         ai_chance = {
             factor = 10
@@ -2422,8 +2411,7 @@ country_event = {
         1895 = { trade_goods = tropical_wood } #Daloa
         1897 = { trade_goods = tropical_wood } #Akoupe
         1900 = { trade_goods = cotton } #Odienne
-        1898 = { trade_goods = rubber } #Kong
-        1899 = { trade_goods = rubber } #Bondouku
+        1898 = { trade_goods = timber } #Kong
 
         ai_chance = {
             factor = 10
@@ -2432,19 +2420,13 @@ country_event = {
                 OR = {
                     any_neighbor_country = {
                         any_owned_province = {
-                            OR = {
-                                trade_goods = tropical_wood
-                                trade_goods = rubber
-                            }
+                            trade_goods = tropical_wood
                             unemployment_by_type = { value = 0.05 type = labourers }
                         }
                     }
                     any_greater_power = {
                         any_owned_province = {
-                            OR = {
-                                trade_goods = tropical_wood
-                                trade_goods = rubber
-                            }
+                            trade_goods = tropical_wood
                             unemployment_by_type = { value = 0.05 type = labourers }
                         }
                     }
@@ -2460,7 +2442,6 @@ country_event = {
         1894 = { trade_goods = tobacco }
         1900 = { trade_goods = cotton } #Odienne
         1898 = { trade_goods = cotton } #Kong
-        1899 = { trade_goods = rubber } #Bondouku
 
         ai_chance = {
             factor = 10
@@ -2657,9 +2638,8 @@ country_event = {
 
     option = {
         name = "EVTOPTA199039" #Historical Option
-        1883 = { trade_goods = rubber } #Beyla
-        1882 = { trade_goods = rubber } #Kankan
-        1880 = { trade_goods = rubber } #Timbo
+        1882 = { trade_goods = timber } #Kankan
+        1880 = { trade_goods = iron } #Timbo
         1879 = { trade_goods = fruit }  #Boffa/Conakry
         1881 = { trade_goods = precious_metal } #Dinguiraye
 
@@ -2668,9 +2648,8 @@ country_event = {
 
     option = {
         name = "EVTOPTC199039" #Coffee Option
-        1883 = { trade_goods = coffee } #Beyla
         1882 = { trade_goods = coffee } #Kankan
-        1880 = { trade_goods = coffee } #Timbo
+        1880 = { trade_goods = iron } #Timbo
         1879 = { trade_goods = fruit }  #Boffa/Conakry
         1881 = { trade_goods = precious_metal } #Dinguiraye
 
@@ -2697,9 +2676,8 @@ country_event = {
     }
     option = {
         name = "EVTOPTC199041" #Mixed Option
-        1883 = { trade_goods = coffee } #Beyla
         1882 = { trade_goods = coffee } #Kankan
-        1880 = { trade_goods = cotton } #Timbo
+        1880 = { trade_goods = iron } #Timbo
         1879 = { trade_goods = fruit }  #Boffa/Conakry
         1881 = { trade_goods = precious_metal } #Dinguiraye
 
@@ -3002,9 +2980,7 @@ country_event = {
         1963 = { trade_goods = cotton }
         1960 = { trade_goods = coffee }
         1961 = { trade_goods = coffee }
-        1957 = { trade_goods = coffee }
         1956 = { trade_goods = coffee }
-        1962 = { trade_goods = rubber }
 
         ai_chance = { factor = 80 }
     }
@@ -3016,9 +2992,7 @@ country_event = {
         1963 = { trade_goods = coffee }
         1960 = { trade_goods = coffee }
         1961 = { trade_goods = coffee }
-        1957 = { trade_goods = coffee }
         1956 = { trade_goods = coffee }
-        1962 = { trade_goods = rubber }
 
         ai_chance = {
             factor = 10
@@ -3051,7 +3025,6 @@ country_event = {
         1961 = { trade_goods = coffee }
         1956 = { trade_goods = rubber }
         1959 = { trade_goods = rubber }
-        1962 = { trade_goods = rubber }
 
         ai_chance = {
             factor = 10
@@ -3171,7 +3144,6 @@ country_event = {
 
     option = {
         name = "EVTOPTA199039" #Historical Option
-        1980 = { trade_goods = rubber }
         1977 = { trade_goods = coffee }  #Brazzaville
         1978 = { trade_goods = tropical_wood }
         2624 = { trade_goods = coffee }
@@ -3181,7 +3153,6 @@ country_event = {
 
     option = {
         name = "EVTOPTC199039" #Coffee Option
-        1980 = { trade_goods = tropical_wood }
         1977 = { trade_goods = coffee }  #Brazzaville
         1978 = { trade_goods = coffee }
         2624 = { trade_goods = coffee }
@@ -3210,7 +3181,6 @@ country_event = {
 
     option = {
         name = "EVTOPTC199048" #Rubber
-        1980 = { trade_goods = rubber }
         1977 = { trade_goods = tropical_wood }  #Brazzaville
         1978 = { trade_goods = tropical_wood }
         2624 = { trade_goods = rubber }
@@ -3269,10 +3239,7 @@ country_event = {
         name = "EVTOPTA199039" #Historical Option
 
         1995 = { trade_goods = cotton }
-        1985 = { trade_goods = rubber }
-        1986 = { trade_goods = rubber }
-        1996 = { trade_goods = rubber }
-        1992 = { trade_goods = rubber }
+        1985 = { trade_goods = timber }
         1982 = { trade_goods = precious_goods } #Ivory in Leopoldville
         1991 = { trade_goods = precious_metal }
         1984 = { trade_goods = precious_metal }
@@ -3290,10 +3257,7 @@ country_event = {
         name = "EVTOPTB199049" #Coffee and Cotton Option
 
         1995 = { trade_goods = cotton }
-        1985 = { trade_goods = rubber }
-        1986 = { trade_goods = rubber }
-        1996 = { trade_goods = rubber }
-        1992 = { trade_goods = rubber }
+        1985 = { trade_goods = timber }
         1982 = { trade_goods = precious_goods } #Ivory in Leopoldville
         1991 = { trade_goods = precious_metal }
         1984 = { trade_goods = precious_metal }
@@ -3330,10 +3294,7 @@ country_event = {
         name = "EVTOPTC199049" #Tea and Tropical Wood Option
 
         1995 = { trade_goods = cotton }
-        1985 = { trade_goods = rubber }
-        1986 = { trade_goods = rubber }
-        1996 = { trade_goods = rubber }
-        1992 = { trade_goods = rubber }
+        1985 = { trade_goods = timber }
         1982 = { trade_goods = precious_goods } #Ivory in Leopoldville
         1991 = { trade_goods = precious_metal }
         1984 = { trade_goods = precious_metal }
@@ -3928,8 +3889,7 @@ country_event = {
     option = {
         name = "EVTOPTA199039" #Historical Option
 
-        1965 = { trade_goods = rubber }
-        1970 = { trade_goods = rubber }
+        1965 = { trade_goods = timber }
 
         1969 = { trade_goods = precious_goods } #Ivory
 
@@ -3944,8 +3904,7 @@ country_event = {
 
     option = {
         name = "EVTOPTE199053" #Coffee Option
-        1965 = { trade_goods = rubber }
-        1970 = { trade_goods = rubber }
+        1965 = { trade_goods = timber }
 
         1969 = { trade_goods = precious_goods } #Ivory
 
@@ -3978,8 +3937,7 @@ country_event = {
 
     option = {
         name = "EVTOPTC199050" #Cotton Option
-        1965 = { trade_goods = rubber }
-        1970 = { trade_goods = rubber }
+        1965 = { trade_goods = timber }
 
         1969 = { trade_goods = precious_goods } #Ivory
 
@@ -6495,7 +6453,6 @@ province_event = {
                     province_id = 1290
                     province_id = 1593
                     province_id = 1248
-                    province_id = 1318
                     province_id = 1350
                     province_id = 1359
                     province_id = 1407
@@ -6532,6 +6489,8 @@ province_event = {
                     province_id = 1541
                     province_id = 1507 #Zhenyuan - China
                     province_id = 1503 #Guilin
+					province_id = 1549 #Jiujiang
+					province_id = 1545 #Nanchang
                 }
             }
 

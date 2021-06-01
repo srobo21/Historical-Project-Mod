@@ -5,16 +5,16 @@ party_issues = {
     trade_policy = {
         protectionism = {
             max_tariff = 1
-            min_tariff = -0.25
+            min_tariff = -0.35
         }
         free_trade = {
-            max_tariff = 0.25
+            max_tariff = 0.35
             min_tariff = -1
         }
     }
     economic_policy = {
         laissez_faire = {
-            max_tax = 0.5
+            max_tax = 0.75
             factory_owner_cost = 0.3
             factory_output = 0.1
             import_cost = -0.1
@@ -66,7 +66,7 @@ party_issues = {
         }
         state_capitalism = {
             import_cost = 0.25
-            min_tax = 0.25
+            min_tax = 0.2
             factory_owner_cost = 0.6
 
             rules = {
@@ -89,7 +89,7 @@ party_issues = {
         }
         planned_economy = {
             import_cost = 0.5
-            min_tax = 0.5
+            min_tax = 0.4
             factory_throughput = 0.05
             factory_owner_cost = -1    #negative costs, can't build.
 
@@ -187,11 +187,14 @@ party_issues = {
             max_social_spending = 0.01
         }
         no_position_set = {
+			max_social_spending = 1
         }
         populist_welfare = {
+			max_social_spending = 1
             min_social_spending = 0.15
         }
         welfare_state = {
+			max_social_spending = 1
             min_social_spending = 0.33
         }
     }
@@ -984,7 +987,7 @@ social_reforms = {
             education_efficiency_modifier = -0.1
             factory_throughput = 0.1
             artisan_throughput = 0.1
-            RGO_throughput = 0.25
+            RGO_throughput = 0.2
             allow = {
                 NOT = { has_country_flag = government_busy_with_something }
             }
@@ -1058,6 +1061,17 @@ economic_reforms = {
 
             on_execute = {
                 effect = {
+					random_owned = {
+					owner = {
+						any_country = {
+							limit = {
+								exists = yes
+								vassal_of = THIS
+							}
+							economic_reform = yes_land_reform
+						}
+					}
+					}
                     any_pop = {
                         scaled_militancy = {
                             ideology = liberal
@@ -1759,7 +1773,7 @@ military_reforms = {
             civilization_progress_modifier = 0.1
 
             allow = {
-                any_owned_province = { has_building = naval_base }
+                any_owned_province = { port = yes }
                 OR = {
                     ai = no
                     AND = {

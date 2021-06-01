@@ -26,6 +26,10 @@ picking_personality = {
 
 ####
 
+landlocked_province = {
+	icon = 2	
+}
+
 ######
 ##Rebel Modifiers
 ######
@@ -37,7 +41,9 @@ core_when_done = {
     icon = 17
 }
 
-####
+######
+##Government
+######
 
 war_propaganda = {
     war_exhaustion = -0.02
@@ -56,6 +62,14 @@ constitutional_crisis = {
     badboy = 0.01
     icon = 6
 }
+
+democratic_peace_summit = {
+	badboy = -0.01
+	diplomatic_points_modifier = -0.05
+	icon = 5
+}
+
+####
 
 war_focus = {
     war_exhaustion = -0.1
@@ -205,8 +219,8 @@ non_interventionism_trade_policy = {
 
 french_liberal_school = {
     max_tariff = -0.2
-    administrative_efficiency_modifier = 0.2
-    tax_efficiency = 0.2
+    administrative_efficiency_modifier = 0.1
+    tariff_efficiency_modifier = 0.1
     industry_tech_research_bonus = 0.05
     commerce_tech_research_bonus = 0.05
     culture_tech_research_bonus = 0.05
@@ -215,7 +229,7 @@ french_liberal_school = {
 }
 smithian_school = {
     max_tariff = -0.1
-    tax_efficiency = 0.2
+	tax_efficiency = 0.05
     tariff_efficiency_modifier = 0.2
     administrative_efficiency_modifier = 0.05
     icon = 9
@@ -250,7 +264,8 @@ polish_uprising_mobilization = {
     mobilisation_size = 0.4
     prestige = -0.02
     war_exhaustion = -0.06
-    tax_efficiency = 0.25
+    tax_efficiency = 0.05
+	administrative_efficiency_modifier = 0.1
     tariff_efficiency_modifier = 0.25
     icon = 18
 }
@@ -266,7 +281,7 @@ unrecognized_country = {
 }
 
 monthly_payment_made = {
-    tax_efficiency = 0.1
+    tax_efficiency = 0.05
     icon = 9
 }
 
@@ -290,6 +305,11 @@ relutanct_figher = {
 
 native_assimilation_act_policy = {
     badboy = 0.01
+    icon = 18
+}
+
+african_assimilation_act_policy = {
+    badboy = 0.04
     icon = 18
 }
 
@@ -319,7 +339,7 @@ earthquake_devastation = {
 
 #MM Modifiers
 amir_kabir = {
-    research_points_modifier = 0.2
+    research_points_modifier = 0.1
     global_pop_militancy_modifier = 0.01
     suppression_points_modifier = -0.5
     icon = 17
@@ -361,7 +381,7 @@ state_of_emergency_modifier = {
     war_exhaustion = -0.1
     global_pop_militancy_modifier = -0.3
     min_military_spending = 0.25
-    max_social_spending = -0.3
+    max_social_spending = 0.3
     min_tariff = 0.25
     ruling_party_support = -0.25
     icon = 5
@@ -391,7 +411,8 @@ repatriation = {
 
 international_zone_modifier = {
     administrative_efficiency_modifier = 0.5
-    tax_efficiency = 0.5
+    tariff_efficiency_modifier = 0.1
+	tax_efficiency = 0.1
     research_points_modifier = -1.0
     education_efficiency_modifier = -0.5
     mobilisation_size = -4
@@ -530,7 +551,7 @@ sound_dues_toll = {
 }
 
 silver_mine = {
-    local_RGO_output = -0.25
+    local_RGO_output = -0.5
     icon = 11
 }
 
@@ -750,7 +771,7 @@ the_big_army = {
 
 caudillo_leaders = {
     prestige = -0.5
-    tax_efficiency = 0.3
+    tax_efficiency = 0.2
     mobilisation_size = 0.02
     supply_consumption = -0.1
     ruling_party_support = 0.3
@@ -812,6 +833,10 @@ panama_canal_construction = {
     icon = 11
 }
 
+nicaragua_canal_construction = {
+    icon = 11
+}
+
 eiffel_tower_construction = {
     icon = 11
 }
@@ -831,7 +856,7 @@ land_of_opportunity = {
 }
 
 swiss_banking = {
-    tax_efficiency = 0.1
+    administrative_efficiency_modifier = 0.1
     tariff_efficiency_modifier = 0.25
     icon = 9
 }
@@ -871,7 +896,7 @@ pancasila = {
 bazaari_strike = {
     factory_throughput = -0.25
     rgo_output = -0.25
-    tax_efficiency = -0.35
+    tax_efficiency = -0.3
     loan_interest = 0.5
     pop_militancy_modifier = 0.05
     pop_consciousness_modifier = 0.05
@@ -907,10 +932,10 @@ reading = {
 }
 
 camillo_cavour = {
-    prestige = 0.01
+    prestige = 0.05
     diplomatic_points_modifier = 0.25
     ruling_party_support = 0.25
-    industry_tech_research_bonus = 0.05
+    industry_tech_research_bonus = 0.1
     badboy = -0.01
     icon = 17
 }
@@ -1086,6 +1111,13 @@ colonial_museum_of_natural_history = {
     research_points_modifier = 0.02
     prestige = 0.01
     icon = 3
+}
+
+new_colonial_government = {
+    pop_militancy_modifier = -0.2
+	farm_rgo_eff = -0.1
+    mine_rgo_eff = -0.1
+    icon = 2
 }
 
 colonial_mismanagement = {
@@ -1871,7 +1903,7 @@ trade_unions_promised = {
 #}
 
 dar_al_funun = {
-    research_points_modifier = 0.2
+    research_points_modifier = 0.1
     icon = 5
 }
 
@@ -1884,6 +1916,7 @@ dar_al_funun = {
 
 ### Uprisings ### PDM Modifier for refute manifest destiny
 fight_the_power = {
+	rgo_output = -0.2
     global_pop_militancy_modifier = 0.01
     global_pop_consciousness_modifier = 0.03
     land_organisation = -0.2
@@ -2208,7 +2241,7 @@ jewish_diaspora = {
 
 ### Ethiopia ###
 exploiting_the_land = {
-    tax_efficiency = 0.25
+    tax_efficiency = 0.2
     supply_consumption = -0.1
     prestige = -0.1
     icon = 15
@@ -2316,7 +2349,8 @@ treaties_of_velasco = {
 
 ### Ottomanism
 jizya = {
-    tax_efficiency = 0.1
+    tax_efficiency = 0.05
+	administrative_efficiency_modifier = 0.05
     global_assimilation_rate = -0.25
     icon = 18
 }
@@ -2329,7 +2363,7 @@ ottoman_oppression = {
     mobilisation_size = -0.02
     land_organisation = -0.05
     global_assimilation_rate = -0.25
-    tax_efficiency = 0.3
+    tax_efficiency = 0.05
     #non_accepted_pop_militancy_modifier = 0.05
     #non_accepted_pop_consciousness_modifier = 0.1
     icon = 5

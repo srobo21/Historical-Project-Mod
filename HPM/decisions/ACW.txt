@@ -1372,7 +1372,10 @@ political_decisions = {
             89 = { add_core = CSA }
             88 = { add_core = CSA }
             87 = { add_core = CSA }
-            any_neighbor_country = { limit = { any_owned_province = { is_core = THIS } } country_event = 441268 }
+            any_neighbor_country = {
+				limit = { any_owned_province = { is_core = THIS } }
+				country_event = 441268
+			}
         }
         ai_will_do = { factor = 1 }
     }
@@ -1487,6 +1490,7 @@ political_decisions = {
             44 = { OR = { owned_by = THIS owner = { NOT = { is_culture_group = american_cultures } } } }
             is_greater_power = yes
             nationalism_n_imperialism = 1
+			NOT = { owns = 2209 }
         }
 
         allow = {
@@ -2059,7 +2063,7 @@ political_decisions = {
             135 = { change_province_name = "Lubbock" }
             92 = { change_province_name = "Coeur D'Alene" }
             93 = { change_province_name = "Pocatello" }
-            111 = { change_province_name = "Rock Springs" }
+            111 = { change_province_name = "Jackson Hole" }
             130 = { change_province_name = "Tahlequah" }
             114 = { change_province_name = "Missoula" }
             115 = { change_province_name = "Great Falls" }

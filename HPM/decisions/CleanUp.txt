@@ -1,4 +1,67 @@
 political_decisions = {
+
+	mark_down_landlocked = {
+        potential = {
+			exists = yes
+			ai = yes
+			any_owned_province = {
+				port = no
+				NOT = {
+					has_province_modifier = landlocked_province
+					is_core = THIS
+					any_neighbor_province = { owned_by = THIS }
+				}
+			}
+        }
+
+        allow = {
+			war = no
+        }
+
+        effect = {
+			any_owned = {
+				limit = {
+					port = no
+					NOT = {
+						is_core = THIS
+						any_neighbor_province = { owned_by = THIS }
+					}
+				}
+				add_province_modifier = { name = landlocked_province duration = 3650 }
+			}
+        }
+        ai_will_do = { factor = 1 }
+    }
+	
+	take_landlocked_provinces = {
+        potential = {
+			exists = yes
+			any_owned_province = {
+				any_neighbor_province = {
+					is_core = THIS
+					has_province_modifier = landlocked_province
+				}
+			}
+        }
+
+        allow = {
+			war = no
+        }
+
+        effect = {
+           any_neighbor_country  = {
+				limit = {
+					any_owned_province = {
+						is_core = THIS
+						has_province_modifier = landlocked_province
+					}
+				}
+				country_event = 6016826
+			}
+        }
+        ai_will_do = { factor = 1 }
+    }
+
     ottoman_oppression_mil_gain = {
         potential = {
             ai = yes
@@ -1735,6 +1798,18 @@ political_decisions = {
                         owns = 2323
                         2323 = { trade_goods = precious_metal NOT = { has_province_modifier = silver_mine } }
                     }
+					AND = {
+                        owns = 2156
+                        2156 = { trade_goods = precious_metal NOT = { has_province_modifier = silver_mine } }
+                    }
+					AND = {
+                        owns = 2154
+                        2154 = { trade_goods = precious_metal NOT = { has_province_modifier = silver_mine } }
+                    }
+					AND = {
+                        owns = 2179
+                        2179 = { trade_goods = precious_metal NOT = { has_province_modifier = silver_mine } }
+                    }
                 }
             }
         }
@@ -1755,6 +1830,9 @@ political_decisions = {
                             province_id = 312
                             province_id = 2322
                             province_id = 2323
+							province_id = 2156
+							province_id = 2154
+							province_id = 2179
                         }
                     }
                     add_province_modifier = { name = silver_mine duration = -1 }

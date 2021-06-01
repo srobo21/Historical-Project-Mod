@@ -442,6 +442,7 @@ acquire_core_state = {
         #NOT = { any_owned_province = { is_capital = yes } }
         OR = {
             THIS = { ai = no }
+			any_owned_province = { owner = { war_with = THIS } }
             AND = {
                 THIS = { total_amount_of_ships = 5 }
                 any_owned_province = { port = yes }
@@ -625,7 +626,7 @@ restore_austrian_empire = {
                 is_core = SLV
                 is_core = BOH
                 is_core = HUN
-                region = AUS_702
+                is_core = GLM
                 region = AUS_771
                 region = AUS_780
                 region = AUS_777
@@ -922,7 +923,6 @@ claim_holy_land = {
         OR = {
             THIS = { ai = no }
             any_owned_province = { any_neighbor_province = { owned_by = THIS } }
-            any_owned_province = { port = yes }
             AND = {
                 any_owned_province = { port = yes }
                 THIS = {
@@ -1011,6 +1011,12 @@ unification_casus_belli = {
                 any_core = {
                     this_culture_union = this_union
                     is_cultural_union = yes
+					NOT = {
+					    tag = SIE
+					    tag = BAN
+					    tag = UBD
+					    tag = VRP
+				   }
                 }
             }
             NOT = { any_owned_province = { is_capital = yes } }
@@ -1025,7 +1031,12 @@ unification_casus_belli = {
             any_core = {
                 this_culture_union = this_union
                 is_cultural_union = yes
-                NOT = { tag = SIE }
+                NOT = {
+					tag = SIE
+					tag = BAN
+					tag = UBD
+					tag = VRP
+				}
             }
         }
         NOT = { any_owned_province = { is_capital = yes } }
@@ -1145,6 +1156,12 @@ unification_annex_casus_belli = {
             any_core = {
                 this_culture_union = this_union
                 is_cultural_union = yes
+				NOT = {
+				    tag = SIE
+				    tag = BAN
+				    tag = UBD
+				    tag = VRP
+				}
             }
         }
         OR = {
@@ -1544,7 +1561,15 @@ unification_release_puppet_cb = {
     allowed_countries = {
         is_our_vassal = FROM
         FROM = { is_culture_group = THIS is_substate = no }
-        FROM = { NOT = { has_country_flag = unreleasable_country } }
+        FROM = {
+			NOT = {
+				is_substate = yes
+				has_country_flag = unreleasable_country
+				tag = SIE
+				tag = BAN
+				tag = VRP
+			}
+		}
     }
 
     po_release_puppet = yes
@@ -1597,7 +1622,13 @@ unification_add_to_sphere = {
         culture_has_union_tag = yes
         is_culture_group = THIS
         cultural_union = { exists = no }
-        NOT = { has_country_modifier = neutrality_modifier }
+        NOT = {
+			has_country_modifier = neutrality_modifier
+			tag = SIE
+			tag = BAN
+			tag = UBD
+			tag = VRP
+		}
         THIS = {
             ai = yes
             is_greater_power = yes
@@ -2132,6 +2163,10 @@ liberate_country = {
     can_use = {
         OR = {
             NOT = { has_country_modifier = war_focus }
+			AND = {
+				THIS = { involved_in_crisis = yes }
+				FROM = { involved_in_crisis = yes }
+			}
             THIS = {
                 NOT = {
                     has_country_flag = exclusive_acquire_all_cores_CB
@@ -2148,6 +2183,7 @@ liberate_country = {
         number_of_states = 2
         OR = {
             war_with = THIS
+			THIS = { involved_in_crisis = yes }
             THIS = {
                 NOT = { has_country_modifier = neutrality_modifier }
                 military_score = 1
@@ -2219,6 +2255,10 @@ liberate_country = {
             }
         }
         OR = {
+			AND = {
+                THIS = { ai = yes }
+                war_countries = { any_owned_province = { is_core = FROM } }
+            }
             AND = {
                 THIS = { ai = no }
                 any_owned_province = { is_core = FROM }
@@ -3688,7 +3728,6 @@ place_in_the_sun = {
         OR = {
             #AI and Player can take a neighboring state
             any_owned_province = { any_neighbor_province = { owned_by = THIS } }
-
             #Player can take a neighboring state neighboring a neighboring state
             AND = {
                 THIS = { ai = no }
@@ -3898,7 +3937,6 @@ acquire_state = {
         OR = {
             #AI and Player can take a neighboring state
             any_owned_province = { any_neighbor_province = { owned_by = THIS } }
-
             #Player can take a neighboring state neighboring a neighboring state
             AND = {
                 THIS = { ai = no }
@@ -4017,8 +4055,9 @@ acquire_state = {
     allowed_states_in_crisis = {
         NOT = { any_owned_province = { is_capital = yes } }
         any_owned_province = {
-            any_neighbor_province = {
-                owner = { tag = THIS }
+            OR = {
+                port = yes
+                any_neighbor_province = { owner = { tag = THIS } }
             }
         }
     }
@@ -4234,7 +4273,7 @@ sahel_jihad_cb = {
         NOT = { any_owned_province = { is_core = THIS } }
         OR = {
             any_owned_province = { any_neighbor_province = { owned_by = THIS } }
-            AND = { owner = { war_with = THIS } THIS = { ai = no } }
+			THIS = { ai = no }
         }
     }
 
@@ -4358,10 +4397,7 @@ demand_concession_casus_belli = {
         NOT = { any_owned_province = { is_capital = yes } }
         OR = {
             any_owned_province = { any_neighbor_province = { owned_by = THIS } }
-            AND = {
-                THIS = { ai = no }
-                owner = { war_with = THIS }
-            }
+            THIS = { ai = no }
             AND = {
                 any_owned_province = { port = yes }
                 THIS = { any_owned_province = { port = yes } }
@@ -4431,6 +4467,7 @@ demand_concession_casus_belli = {
                     THIS = {
                         ai = yes
                         oil_driven_ships = 1
+						modern_naval_doctrine = 1
                     }
                 }
             }
@@ -4439,6 +4476,18 @@ demand_concession_casus_belli = {
                 THIS = {
                     modern_divisional_structure = 1
                     army_nco_training = 1
+                }
+				OR = {
+                    any_owned_province = { is_overseas = no }
+                    THIS = {
+                        ai = no
+                        naval_integration = 1
+                    }
+                    THIS = {
+                        ai = yes
+                        invention = modern_battleships
+						modern_naval_doctrine = 1
+                    }
                 }
             }
         } ###End of Non-African Restrictions
@@ -4563,10 +4612,7 @@ demand_concession_NI_casus_belli = {
         NOT = { any_owned_province = { is_capital = yes } }
         OR = {
             any_owned_province = { any_neighbor_province = { owned_by = THIS } }
-            AND = {
-                THIS = { ai = no }
-                owner = { war_with = THIS }
-            }
+           THIS = { ai = no }
             AND = {
                 any_owned_province = { port = yes }
                 THIS = { any_owned_province = { port = yes } }
@@ -4636,6 +4682,7 @@ demand_concession_NI_casus_belli = {
                     THIS = {
                         ai = yes
                         oil_driven_ships = 1
+						modern_naval_doctrine = 1
                     }
                 }
             }
@@ -4644,6 +4691,18 @@ demand_concession_NI_casus_belli = {
                 THIS = {
                     modern_divisional_structure = 1
                     army_nco_training = 1
+                }
+				OR = {
+                    any_owned_province = { is_overseas = no }
+                    THIS = {
+                        ai = no
+                        naval_integration = 1
+                    }
+                    THIS = {
+                        ai = yes
+                        invention = modern_battleships
+						modern_naval_doctrine = 1
+                    }
                 }
             }
         } ###End of Non-African Restrictions
@@ -4762,10 +4821,7 @@ demand_concession_BC_casus_belli = {
         NOT = { any_owned_province = { is_capital = yes } }
         OR = {
             any_owned_province = { any_neighbor_province = { owned_by = THIS } }
-            AND = {
-                THIS = { ai = no }
-                owner = { war_with = THIS }
-            }
+            THIS = { ai = no }
             AND = {
                 any_owned_province = { port = yes }
                 THIS = { any_owned_province = { port = yes } }
@@ -4835,6 +4891,7 @@ demand_concession_BC_casus_belli = {
                     THIS = {
                         ai = yes
                         oil_driven_ships = 1
+						modern_naval_doctrine = 1
                     }
                 }
             }
@@ -4843,6 +4900,18 @@ demand_concession_BC_casus_belli = {
                 THIS = {
                     modern_divisional_structure = 1
                     army_nco_training = 1
+                }
+				OR = {
+                    any_owned_province = { is_overseas = no }
+                    THIS = {
+                        ai = no
+                        naval_integration = 1
+                    }
+                    THIS = {
+                        ai = yes
+                        invention = modern_battleships
+						modern_naval_doctrine = 1
+                    }
                 }
             }
         } ###End of Non-African Restrictions
@@ -6822,7 +6891,10 @@ establish_protectorate_casus_belli = {
 
             AND = {
                 NOT = { total_pops = 2000000 }
-                THIS = { machine_guns = 1 }
+				OR = {
+					THIS = { machine_guns = 1 }
+					THIS = { total_pops = 3000000 }
+				}
                 OR = {
                     capital_scope = { is_overseas = no }
                     THIS = {
@@ -6837,10 +6909,13 @@ establish_protectorate_casus_belli = {
             }
             AND = {
                 NOT = { total_pops = 3000000 }
-                THIS = {
-                    bolt_action_rifles = 1
-                    army_risk_management = 1
-                }
+				OR = {
+					THIS = {
+						bolt_action_rifles = 1
+						army_risk_management = 1
+					}
+					THIS = { total_pops = 5000000 }
+				}
                 OR = {
                     capital_scope = { is_overseas = no }
                     THIS = {
@@ -6855,10 +6930,13 @@ establish_protectorate_casus_belli = {
             }
             AND = {
                 total_pops = 3000000
-                THIS = {
-                    modern_divisional_structure = 1
-                    army_nco_training = 1
-                }
+				OR = {
+					THIS = {
+						modern_divisional_structure = 1
+						army_nco_training = 1
+					}
+					THIS = { total_pops = 6000000 }
+				}
             }
         } ###End of Non-African Restrictions
 
@@ -6995,7 +7073,10 @@ establish_protectorate_NI_casus_belli = {
 
             AND = {
                 NOT = { total_pops = 2000000 }
-                THIS = { machine_guns = 1 }
+                OR = {
+					THIS = { machine_guns = 1 }
+					THIS = { total_pops = 3000000 }
+				}
                 OR = {
                     capital_scope = { is_overseas = no }
                     THIS = {
@@ -7010,10 +7091,13 @@ establish_protectorate_NI_casus_belli = {
             }
             AND = {
                 NOT = { total_pops = 3000000 }
-                THIS = {
-                    bolt_action_rifles = 1
-                    army_risk_management = 1
-                }
+               OR = {
+					THIS = {
+						bolt_action_rifles = 1
+						army_risk_management = 1
+					}
+					THIS = { total_pops = 5000000 }
+				}
                 OR = {
                     capital_scope = { is_overseas = no }
                     THIS = {
@@ -7028,10 +7112,13 @@ establish_protectorate_NI_casus_belli = {
             }
             AND = {
                 total_pops = 3000000
-                THIS = {
-                    modern_divisional_structure = 1
-                    army_nco_training = 1
-                }
+                OR = {
+					THIS = {
+						modern_divisional_structure = 1
+						army_nco_training = 1
+					}
+					THIS = { total_pops = 6000000 }
+				}
             }
         } ###End of Non-African Restrictions
     }
@@ -7169,7 +7256,10 @@ establish_protectorate_BC_casus_belli = {
 
             AND = {
                 NOT = { total_pops = 2000000 }
-                THIS = { machine_guns = 1 }
+                OR = {
+					THIS = { machine_guns = 1 }
+					THIS = { total_pops = 3000000 }
+				}
                 OR = {
                     capital_scope = { is_overseas = no }
                     THIS = {
@@ -7184,10 +7274,13 @@ establish_protectorate_BC_casus_belli = {
             }
             AND = {
                 NOT = { total_pops = 3000000 }
-                THIS = {
-                    bolt_action_rifles = 1
-                    army_risk_management = 1
-                }
+                OR = {
+					THIS = {
+						bolt_action_rifles = 1
+						army_risk_management = 1
+					}
+					THIS = { total_pops = 5000000 }
+				}
                 OR = {
                     capital_scope = { is_overseas = no }
                     THIS = {
@@ -7202,10 +7295,13 @@ establish_protectorate_BC_casus_belli = {
             }
             AND = {
                 total_pops = 3000000
-                THIS = {
-                    modern_divisional_structure = 1
-                    army_nco_training = 1
-                }
+                OR = {
+					THIS = {
+						modern_divisional_structure = 1
+						army_nco_training = 1
+					}
+					THIS = { total_pops = 6000000 }
+				}
             }
         } ###End of Non-African Restrictions
     }
@@ -10582,6 +10678,7 @@ steal_puppet = {
                         any_owned_province = { port = yes }
                     }
                     neighbour = THIS
+                    war_with = THIS
                     any_neighbor_country = {
                         OR = {
                             vassal_of = THIS
