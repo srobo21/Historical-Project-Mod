@@ -1,3 +1,5 @@
+HPM with development branch and all outstanding pull requests merged.
+
 # Historical Project Mod
 
 *This readme is under construction*
